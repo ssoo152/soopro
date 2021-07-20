@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>S GALLERY 01</title>
+
+    <style>
+        * {
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        body{
+            
+            background: url(https://images.unsplash.com/photo-1501270067467-8298cce1babb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2726&q=80);
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .gallpg {
+            overflow:hidden;
+            height: auto;          
+            background-color: rgba( 255, 255, 255, 0.6);
+        }
+
+
+        .Btitle {
+            color: black;
+            font-size: 45px;
+            text-align: center;
+            padding-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .bt {
+            padding-bottom: 25px;
+        }
+
+        .h {
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+            float: left;
+            margin-left: 50px;
+        }
+
+        .h:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        .b {
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+            float: left;
+            margin-left: 30px;
+        }
+
+        .b:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        .p {
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+            float: right;
+            margin-right: 50px;
+        }
+
+        .p:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        .contents {
+            width: 75%;
+            padding-top: 20px;
+            margin: auto;
+        }
+
+        .postbox {
+
+            float: left;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 40px auto 0px auto;
+        }
+
+        .title {
+            margin: 30px, 0, 20px, 40px;
+            width: 100%;
+            font-size: 50px;
+            line-height: center;
+            color: black;
+        }
+
+
+        .story {
+            margin-top: 20px, 0, 0, 0;
+            width: 100%;
+            font-size: 20px;
+            line-height: center;
+            color: black;
+        }
+
+        .address {
+            margin-top: 20px;
+            width: 100%;
+            font-size: 20px;
+            line-height: center;
+            color: black;
+        }
+
+        .img {
+
+            max-width: 100%;
+            height: 720px;
+            align-items: center;
+            background-image: url();
+            background-position: center;
+            background-size: cover;
+        }
+
+        .D {
+            width: 100%;
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+            line-height: center;
+            margin-left: 1000px;
+            margin-bottom: 50px;
+        }
+
+        .D:hover {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            viewpic()
+
+        })
+
+        function viewpic() {
+
+            let query = location.search.substring(1)
+            let pos = query.indexOf('=')
+            let id = query.substring(pos + 1)
+
+            $.ajax({
+                type: "GET",
+                url: `/coll?id=${id}`,
+                data: {},
+                success: function (response) {
+                    console.log(response)
+
+                    let sgall = response['sgall']
+                    let ncity = sgall['ncity']
+                    let img = sgall['img']
+                    let title = sgall['title']
+                    let story = sgall['story']
+                    let address = sgall['address']
+
+                    let temp_html = `<div class="Btitle">${ncity}</div>
+                                        <div class="bt">
+                                            <a class="h" href="/main" >Home</a>
+                                            <a class="b" href="#" onClick="history.back()" >Back</a>
+                                            <a class="p" href="/posting" >New post</a>
+                                        </div>
+                                        <hr style="height:1px; width:1100px; border-width:0; color:gray; background-color:gray">
+                                            <div class="img" id="img">
+                                                <img src="../static/${img}" class="card-img-top"></div>
+                                                    <div class="postbox">
+                                                        <div class="title" id="title">
+                                                            <p>${title}</p>
+                                                        </div>
+                                                        <div class="story" id="story">
+                                                            <p>${story}</p>
+                                                    </div>
+                                                    <div class="address" id="address">
+                                                        <p>${address}</p>
+                                                    </div>
+                                    
+                                                    <div class="Delete">
+                                                        <a class="D">Delete</a>
+                                                    </div>
+                                    
+                                                </div>`
+
+
+                    $('#container').append(temp_html)
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div class=gallpg>
+        <div class=Btitle></div>
+        <div class="wrap">
+            <div class="contents" id="container"></div>
+        </div>
+    </div>
+</body>
+
+</html>

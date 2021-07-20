@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S GALLERY post</title>
+
+    <style>
+        * {
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        body {
+            background-color: rgba(168, 168, 168, 0.7);
+            
+        }
+
+        .Citypost {
+
+            text-align: center;
+            text-shadow: rgb(0, 0, 0);
+            font-size: 45px;
+            color: rgb(255, 255, 255);
+            padding-top: 20px;
+        }
+
+        .bt {
+            padding-bottom: 25px;
+
+        }
+
+        .h {
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            float: left;
+            margin-left: 200px;
+
+        }
+
+        .h:hover {
+            text-decoration: none;
+            color: white;
+            ;
+        }
+
+        .b {
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            float: right;
+            margin-right: 200px;
+        }
+
+        .b:hover {
+            text-decoration: none;
+            color: white;
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+
+        .container {
+            border-radius: 5px;
+            background-color: white;
+            padding: 20px;
+            margin: auto;
+            width: 70%;
+        }
+
+        .col-25 {
+            float: left;
+            width: 15%;
+            margin-top: 6px;
+            padding-left: 15px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 85%;
+            margin-top: 6px;
+            padding-right: 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+
+            .col-25,
+            .col-75 {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+
+        .sbt {
+            color: rgb(32, 32, 32);
+            background-color: #ffffff;
+            border: 1px solid rgb(197, 197, 197);
+
+        }
+
+        .sbt:hover {
+            background-color: rgb(197, 197, 197);
+            color: #ffffff;
+
+        }
+
+
+        .filebox label {
+            display: inline-block;
+            position: relative;
+
+            color: rgb(117, 117, 117);
+            font-size: 14px;
+            line-height: center;
+            vertical-align: middle;
+            background-color: #ffffff;
+            cursor: pointer;
+            border: 1px solid rgb(197, 197, 197);
+            border-bottom-color: rgb(197, 197, 197);
+            border-radius: .25em;
+        }
+
+        /* named upload */
+
+        .filebox label:hover {
+            background-color: rgb(117, 117, 117);
+            color: #ffffff;
+
+        }
+
+        .filebox .form-control {
+            display: block;
+            margin: 0 10px 0 135px;
+            position: relative;
+            width: 100px;
+            /* label의 패딩값과 일치 */
+            font-size: inherit;
+            font-family: inherit;
+            line-height: normal;
+
+            color: rgb(151, 151, 151);
+            background-color: #ffffff;
+            border: 1px solid rgb(197, 197, 197);
+            border-bottom-color: rgb(197, 197, 197);
+            border-radius: .25em;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    </style>
+    <script type="text/javascript">
+
+        function savepic() {
+            let img = $("#img")[0].files[0];
+            let title = $("#title").val();
+            let ncity = $("#ncity").val();
+            let story = $("#story").val();
+            let address = $("#address").val();
+
+            let form_data = new FormData()
+
+
+            form_data.append("img_give", img)
+            form_data.append("title_give", title)
+            form_data.append("ncity_give", ncity)
+            form_data.append("story_give", story)
+            form_data.append("address_give", address)
+
+
+
+            console.log(img)
+
+
+            $.ajax({
+                type: "POST",
+                url: "/gall",
+                enctype: "multipart/form-data",
+                cache: false,
+                processData: false,
+                contentType: false,
+                data: form_data,
+                success: function (response) {
+                    console.log(response)
+                    if (response["result"] == "success") {
+                        alert("저장이 완료되었습니다.");
+                        location.href = `/view/${response["city"]}`
+                    } else {
+                        alert("저장이 완료되지 않았습니다.");
+                    }
+                }
+            })
+        }
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+        })
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+
+
+<body>
+    <div class="Citypost">New Post</div>
+
+
+    <div class="wrap">
+        <div class="bt">
+            <a class="h" href="/">Home</a>
+            <a class="b" href="/gohome">Back</a>
+
+        </div>
+
+        <hr style="height:1px; width:1100px; border-width:0; color:white; background-color:white">
+
+        <form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="title">제목</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="title" name="title" placeholder="20자 이내">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="ncity">나라/도시</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="ncity" name="ncity">
+                            <option value="Newyork">Newyork</option>
+                            <option value="LosAngeles">Los Angeles</option>
+                            <option value="Seattle">Seattle</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="story">스토리</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="story" name="story" placeholder="100자 이내" style="height:200px"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="addrs">주소</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="address" name="address">
+                    </div>
+                </div>
+
+                <form method="POST">
+                    <div class="filebox">
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" value="Choose file" accept=".gif, .jpg, .png, .jpeg"
+                                id="img">
+                            <label class="input-group-text" for="img">Upload</label>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="row text-center" style="width: 100%">
+                    <div style="width: 30%; float:none; margin:0 auto">
+                        <button onclick="savepic()" type="button" class="btn btn-outline-secondary">Save</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

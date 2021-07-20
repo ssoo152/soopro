@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>S GALLERY la</title>
+</head>
+<style>
+    * {
+        font-family: 'Gothic A1', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background-image: url(https://images.unsplash.com/photo-1572975165675-ab322e4b55ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2851&q=80);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .wrap {
+        background: rgba(255, 255, 255, 0.5);
+
+    }
+
+
+    .City {
+        color: black;
+        font-size: 45px;
+        text-align: center;
+        padding-top: 20px;
+        background: rgba(255, 255, 255, 0.5);
+
+
+    }
+
+    .bt {
+        padding-bottom: 25px;
+
+    }
+
+
+    .h {
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
+        float: left;
+        margin-left: 200px;
+
+    }
+
+    .h:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+    .b {
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
+        float: left;
+        margin-left: 30px;
+
+    }
+
+    .b:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+    .p {
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
+        float: right;
+        margin-right: 200px;
+
+    }
+
+    .p:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+    .cardbox {
+        width: 75%;
+        padding-top: 20px;
+        margin: auto;
+    }
+</style>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        cardpic()
+    })
+
+
+
+    function cardpic() {
+
+
+        $.ajax({
+            type: "GET",
+            url: `/gall?ncity=la`,
+            data: {},
+            success: function (response) {
+                let sgalls = response['sgalls']
+                for (let i = 0; i < sgalls.length; i++) {
+                    let img = sgalls[i]['img']
+                    let title = sgalls[i]['title']
+                    let id = sgalls[i]['_id']
+
+
+                    let temp_html = `<div class="card">
+                                        <a target="_self" href="../gall1?id=${id}" class="card-title">
+                                                <img class="card-img-top"
+                                                     src="../static/${img}"
+                                                     alt="Card image cap">
+
+                                                <div class="card-body">
+                                                    <p>${title}</p>                                    
+                                                    </div>
+                                                </a>
+                                            </div>`
+                    $('#phocard').append(temp_html)
+                }
+            }
+        })
+    }
+
+
+</script>
+
+<body>
+    <div class="City">Los Angeles</div>
+    <div class="wrap">
+
+        <div class="bt">
+            <a class="h" href="/">Home</a>
+            <a class="b" href="/gohome">Back</a>
+            <a class="p" href="/posting">New post</a>
+        </div>
+
+        <hr style="height:1px; width:1100px; border-width:0; color:black; background-color:black">
+
+        <div class="cardbox">
+
+            <div id="phocard" class="card-columns">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

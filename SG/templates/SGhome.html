@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S GALLERY city home</title>
+
+    <style>
+        * {
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .homeimg {
+            background-image: url(https://images.unsplash.com/photo-1490430657723-4d607c1503fc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: -1;
+            opacity: 0.7;
+
+        }
+
+
+        .Stitle {
+            color: rgb(255, 255, 255);
+            text-align: center;
+
+            margin-top: 250px;
+            margin-bottom: 200px;
+
+        }
+
+        .Stitle>h1 {
+            font-size: 110px;
+            margin-bottom: 0;
+        }
+
+        .city {
+            text-align: center;
+            width: 100%;
+        }
+
+        .city>a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            padding: none;
+            transition: 0.5s;
+            text-align: center;
+            background-color: #ffffff00;
+            border: 0;
+            outline: 0;
+            font-size: 35px;
+            margin: 0 50px 0 50px;
+            cursor: pointer;
+        }
+
+        .city>a:hover {
+            text-shadow: 5px 5px 10px #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="homeimg">
+        <div class="Stitle">
+            <h1>Which do you wanna go</h1>
+        </div>
+
+        <div class="city">
+            <a class="c1" href="/view/1">Newyork</a>
+            <a class="c2" href="/view/2">Los Angeles</a>
+            <a class="c3" href="/view/3">Seattle</a>
+        </div>
+    </div>
+</body>
+
+</html>
